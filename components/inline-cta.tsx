@@ -7,16 +7,24 @@ export default function InlineCTA() {
   const WHATSAPP_NUMBER = "1234567890"
 
   return (
-    <section className="py-10 px-4 bg-card/50 border-t border-b border-border">
-      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+    <section className="border-t border-border/80 bg-background/80 px-4 py-6 backdrop-blur-sm">
+      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
+        <div className="space-y-1 text-xs text-muted-foreground sm:text-sm">
+          <p className="font-medium text-foreground">
+            Une question avant de réserver&nbsp;? Parlons‑en.
+          </p>
+          <p>
+            Expliquez‑nous votre besoin, nous vous orientons vers le bon type de rendez‑vous.
+          </p>
+        </div>
         <Button
           asChild
           size="lg"
-          className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg rounded-full shadow-sm"
+          className="rounded-full bg-primary px-7 py-5 text-sm text-primary-foreground shadow-sm hover:bg-primary/90"
         >
           <a href={`tel:${PHONE_NUMBER}`} className="flex items-center gap-3">
             <Phone className="w-5 h-5" />
-            Call Now: {PHONE_NUMBER}
+            Appeler la clinique
           </a>
         </Button>
 
@@ -24,7 +32,7 @@ export default function InlineCTA() {
           asChild
           size="lg"
           variant="outline"
-          className="px-8 py-6 text-lg rounded-full"
+          className="rounded-full px-7 py-5 text-sm"
         >
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}`}
@@ -33,7 +41,7 @@ export default function InlineCTA() {
             className="flex items-center gap-3"
           >
             <MessageCircle className="w-5 h-5" />
-            WhatsApp
+            Écrire sur WhatsApp
           </a>
         </Button>
       </div>

@@ -95,25 +95,34 @@ export default function BookingForm() {
   }
 
   return (
-    <section id="booking" className="py-20 bg-gradient-to-b from-background to-primary/5">
-      <div className="container mx-auto px-4">
+    <section id="booking" className="bg-white px-4 py-20">
+      <div className="mx-auto max-w-6xl">
         <ScrollReveal>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 text-balance">Réservez votre rendez-vous</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-              Remplissez le formulaire ci-dessous et nous vous contacterons pour confirmer votre rendez-vous
+          <div className="mb-10 text-center">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+              Étape suivante
+            </p>
+            <h2 className="mb-3 font-serif text-3xl text-foreground md:text-4xl">
+              Réservez votre prochain rendez-vous
+            </h2>
+            <p className="mx-auto max-w-2xl text-sm text-muted-foreground md:text-base">
+              Dites‑nous qui vous êtes et quand vous souhaiteriez venir. Nous vous recontactons rapidement pour
+              confirmer le créneau idéal.
             </p>
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={100}>
-          <Card className="max-w-3xl mx-auto shadow-xl">
-            <CardHeader>
-              <CardTitle>Informations du rendez-vous</CardTitle>
-              <CardDescription>Tous les champs sont obligatoires</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid gap-6 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)]">
+            <Card className="shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-base md:text-lg">Informations du rendez-vous</CardTitle>
+                <CardDescription className="text-xs md:text-sm">
+                  Les champs marqués d’une étoile sont nécessaires pour vous rappeler.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">
@@ -250,22 +259,91 @@ export default function BookingForm() {
                   />
                 </div>
 
-                <Button
-                  type="submit"
-                  className="w-full transition-all duration-300 hover:scale-[1.02]"
-                  disabled={isSubmitting}
-                  size="lg"
-                >
-                  {isSubmitting ? "Envoi en cours..." : "Demander un rendez-vous"}
-                </Button>
+                  <Button
+                    type="submit"
+                    className="w-full rounded-full transition-all duration-300 hover:scale-[1.02]"
+                    disabled={isSubmitting}
+                    size="lg"
+                  >
+                    {isSubmitting ? "Envoi en cours..." : "Demander un rendez-vous"}
+                  </Button>
 
-                <p className="text-sm text-muted-foreground text-center">
-                  En soumettant ce formulaire, vous acceptez d'être contacté par notre clinique pour confirmer votre
-                  rendez-vous.
-                </p>
-              </form>
-            </CardContent>
-          </Card>
+                  <p className="text-center text-xs text-muted-foreground">
+                    En soumettant ce formulaire, vous acceptez d'être contacté par notre clinique pour confirmer votre
+                    rendez-vous.
+                  </p>
+                </form>
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-dashed border-border/80 bg-secondary/40">
+              <CardHeader>
+                <CardTitle className="text-base md:text-lg">Résumé & infos pratiques</CardTitle>
+                <CardDescription className="text-xs md:text-sm">
+                  Un aperçu de votre demande avant notre appel de confirmation.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4 text-xs text-muted-foreground md:text-sm">
+                <div className="rounded-2xl bg-background/70 p-4">
+                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground/80">
+                    Votre demande
+                  </p>
+                  <ul className="space-y-1">
+                    <li>
+                      <span className="font-medium text-foreground/90">Nom&nbsp;:</span>{" "}
+                      {formData.firstName || formData.lastName
+                        ? `${formData.firstName} ${formData.lastName}`.trim()
+                        : "À renseigner"}
+                    </li>
+                    <li>
+                      <span className="font-medium text-foreground/90">Contact&nbsp;:</span>{" "}
+                      {formData.phone || formData.email ? (
+                        <>
+                          {formData.phone && <span>{formData.phone}</span>}
+                          {formData.phone && formData.email && <span> • </span>}
+                          {formData.email && <span>{formData.email}</span>}
+                        </>
+                      ) : (
+                        "Téléphone ou email à renseigner"
+                      )}
+                    </li>
+                    <li>
+                      <span className="font-medium text-foreground/90">Moment souhaité&nbsp;:</span>{" "}
+                      {formData.date && formData.time ? (
+                        <>
+                          {formData.date} à {formData.time}
+                        </>
+                      ) : (
+                        "À définir"
+                      )}
+                    </li>
+                    <li>
+                      <span className="font-medium text-foreground/90">Motif&nbsp;:</span>{" "}
+                      {formData.service || "À choisir dans la liste"}
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="space-y-2 rounded-2xl bg-background/60 p-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground/80">
+                    Ce qu’il se passe ensuite
+                  </p>
+                  <ul className="list-inside list-decimal space-y-1">
+                    <li>Nous vérifions nos disponibilités.</li>
+                    <li>Nous vous appelons ou écrivons pour confirmer le créneau.</li>
+                    <li>Vous recevez un rappel avant votre visite.</li>
+                  </ul>
+                </div>
+
+                <div className="rounded-2xl bg-background/40 p-4">
+                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground/80">
+                    Infos pratiques
+                  </p>
+                  <p>En cas d’urgence aiguë, appelez‑nous directement pour un créneau prioritaire.</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </ScrollReveal>
       </div>
     </section>

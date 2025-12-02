@@ -44,11 +44,14 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-primary/10 p-4">
-      <Card className="w-full max-w-md shadow-xl">
-        <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-3xl font-bold">Connexion Admin</CardTitle>
-          <CardDescription>Accédez au tableau de bord de gestion des rendez-vous</CardDescription>
+    <div className="flex min-h-screen items-center justify-center bg-background p-4">
+      <Card className="w-full max-w-md border-border/70 bg-card/95 shadow-[0_18px_60px_rgba(15,23,42,0.18)]">
+        <CardHeader className="space-y-3 text-center">
+          <div className="mx-auto inline-flex items-center justify-center rounded-2xl bg-primary/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground">
+            Admin • Dentalis
+          </div>
+          <CardTitle className="text-2xl font-semibold">Connexion au tableau de bord</CardTitle>
+          <CardDescription>Gérez les rendez-vous de la clinique en toute sécurité.</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
@@ -85,14 +88,14 @@ export default function AdminLoginPage() {
 
             <Button
               type="submit"
-              className="w-full transition-all duration-300 hover:scale-[1.02]"
+              className="w-full rounded-full transition-all duration-300 hover:scale-[1.02]"
               disabled={isLoading}
             >
               {isLoading ? "Connexion..." : "Se connecter"}
             </Button>
 
-            <div className="text-sm text-muted-foreground text-center pt-2">
-              <p>Démo: admin@dental.com / admin123</p>
+            <div className="pt-3 text-center text-xs text-muted-foreground">
+              <p>Démo : admin@dental.com / admin123</p>
             </div>
           </form>
         </CardContent>

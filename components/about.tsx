@@ -2,12 +2,21 @@
 
 import { useEffect, useMemo, useState } from "react"
 import { ScrollReveal } from "./scroll-reveal"
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { Award, Heart, Users } from "lucide-react"
+
+const LEAD_DOCTOR = {
+  name: "Dr Sarah Johnson, DDS",
+  role: "Dentiste principale",
+  description:
+    "15 ans de pratique en dentisterie esthétique et familiale. Sarah privilégie des rendez-vous longs, pédagogiques et calmes pour que chacun comprenne ses options.",
+  focusPoints: ["Smile design & facettes", "Prévention personnalisée", "Accompagnement des familles"],
+  imagePrimary: "/assets/femaledentist.jpg",
+  imageSecondary: "/assets/hero3.jpg",
+}
 
 export default function About() {
   const [index, setIndex] = useState(0)
-  const images = useMemo(() => ["/assets/hero2.jpg", "/assets/hero3.jpg"], [])
+  const images = useMemo(() => ["/assets/hero2.jpg"], [])
 
   useEffect(() => {
     if (images.length <= 1) return
@@ -18,115 +27,130 @@ export default function About() {
   }, [images.length])
 
   return (
-    <section id="about" className="py-20 px-4 bg-background">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <ScrollReveal>
-            <div>
-              <h2 className="text-4xl md:text-5xl font-serif text-foreground mb-6">Bienvenue dans notre cabinet</h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Chez Dentalis, nous croyons que chacun mérite un sourire sain et éclatant. Notre équipe expérimentée est
-                dédiée à fournir des soins dentaires d'exception dans un environnement chaleureux et accueillant.
+    <section id="about" className="bg-slate-50 px-4 py-16 sm:py-20">
+      <div className="mx-auto max-w-6xl">
+        <ScrollReveal>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div className="space-y-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-foreground">
+                Bienvenue chez Dentalis Studio
+              </h2>
+              
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                Un cabinet pensé comme un espace de calme : lumière douce, sons apaisants, gestes précis. 
+                Chaque visite doit être aussi confortable que possible, pour vous comme pour votre famille.
               </p>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Avec plus de 15 ans d'expérience, nous allions les dernières technologies dentaires à une approche douce
-                et centrée sur le patient. Votre confort et votre satisfaction sont nos priorités.
+              
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                Avec plus de 15 ans d'expérience, nous allions technologies de pointe et écoute attentive. 
+                Vous savez toujours ce que nous faisons, pourquoi nous le faisons, et quelles sont vos options.
               </p>
 
-              <div className="space-y-4">
+              {/* Three Points */}
+              <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
-                    <Award className="w-6 h-6 text-primary" />
+                  <div className="w-10 h-10 flex-shrink-0 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Award className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-1">Excellence des soins</h3>
-                    <p className="text-muted-foreground">Engagés à respecter les plus hauts standards de pratique dentaire.</p>
+                    <h3 className="text-sm font-semibold text-foreground mb-1">Excellence des soins</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Protocoles basés sur les dernières recommandations et mises à jour continues.
+                    </p>
                   </div>
                 </div>
+                
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
-                    <Heart className="w-6 h-6 text-primary" />
+                  <div className="w-10 h-10 flex-shrink-0 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Heart className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-1">Confort du patient</h3>
-                    <p className="text-muted-foreground">Offrir une expérience dentaire apaisante et sans anxiété.</p>
+                    <h3 className="text-sm font-semibold text-foreground mb-1">Confort du patient</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Gestion de la douleur optimisée, parcours clair et temps dédiés à vos questions.
+                    </p>
                   </div>
                 </div>
+                
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
-                    <Users className="w-6 h-6 text-primary" />
+                  <div className="w-10 h-10 flex-shrink-0 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Users className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-1">Axé famille</h3>
-                    <p className="text-muted-foreground">Prise en charge complète pour les patients de tous âges.</p>
+                    <h3 className="text-sm font-semibold text-foreground mb-1">Axé famille</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Des tout‑petits aux seniors, nous adaptons nos soins, notre langage et nos outils.
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
-          </ScrollReveal>
 
-          <ScrollReveal delay={200}>
-            <div className="relative rounded-3xl overflow-hidden border border-border aspect-[4/3] transition-all duration-500 group hover:shadow-2xl hover:-translate-y-1 hover:border-primary/40">
-              <div className="absolute inset-0">
-                {images.map((src, i) => (
-                  <img
-                    key={src}
-                    src={src}
-                    alt="Clinique Dentalis"
-                    className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-out ${index === i ? "opacity-100" : "opacity-0"}`}
+              <p className="text-sm text-muted-foreground italic">
+                Un plateau technique de dernière génération dans une ambiance ultra apaisante.
+              </p>
+            </div>
+
+            {/* Images */}
+            <div className="relative">
+              <ScrollReveal delay={150}>
+                <div className="relative transform rotate-1 hover:rotate-0 transition-all duration-700 hover:scale-105 animate-wiggle" style={{ animationDuration: "4s", animationIterationCount: "infinite" }}>
+                  <img 
+                    src="/assets/hero2.jpg"
+                    alt="Cabinet Dentalis Studio"
+                    className="w-3/4 h-auto shadow-xl"
                     draggable={false}
                   />
-                ))}
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-background/10 to-transparent" />
-            </div>
-          </ScrollReveal>
-        </div>
-
-        <ScrollReveal delay={250}>
-          <div
-            id="team"
-            className="mt-16 relative bg-secondary p-8 md:p-12 rounded-3xl border border-border transition-all duration-500 group hover:shadow-2xl hover:-translate-y-1 hover:border-primary/40"
-          >
-            <h3 className="text-3xl font-serif text-foreground mb-6 transition-transform duration-300 group-hover:-translate-y-0.5">
-              Rencontrez notre équipe
-            </h3>
-            <div className="space-y-6">
-              <div className="border-t border-border pt-6 flex items-start gap-4 transition-transform duration-300 group-hover:-translate-y-0.5">
-                <Avatar className="w-20 h-20 flex-shrink-0 border-2 border-primary/20 transition-transform duration-300 group-hover:scale-105">
-                  <AvatarImage src="/assets/femaledentist.jpg" alt="Dr Sarah Johnson, DDS" />
-                  <AvatarFallback className="text-lg font-semibold bg-primary/10 text-primary">
-                    DSJ
-                  </AvatarFallback>
-                </Avatar>
-                <div className="flex-1">
-                  <h4 className="text-xl font-semibold text-foreground mb-2">Dr Sarah Johnson, DDS</h4>
-                  <p className="text-muted-foreground mb-2">Dentiste principale</p>
-                  <p className="text-muted-foreground leading-relaxed">Avec 15 ans d'expérience en dentisterie générale et esthétique, le Dr Johnson est passionnée par la création de sourires beaux et sains.</p>
                 </div>
-              </div>
-              <div className="border-t border-border pt-6 flex items-start gap-4 transition-transform duration-300 group-hover:-translate-y-0.5">
-                <Avatar className="w-20 h-20 flex-shrink-0 border-2 border-primary/20 transition-transform duration-300 group-hover:scale-105">
-                  <AvatarImage src="/assets/maledentist.jpg" alt="Dr Michael Chen, DDS" />
-                  <AvatarFallback className="text-lg font-semibold bg-primary/10 text-primary">
-                    DMC
-                  </AvatarFallback>
-                </Avatar>
-                <div className="flex-1">
-                  <h4 className="text-xl font-semibold text-foreground mb-2">Dr Michael Chen, DDS</h4>
-                  <p className="text-muted-foreground mb-2">Spécialiste en pédodontie</p>
-                  <p className="text-muted-foreground leading-relaxed">Le Dr Chen est spécialisé en dentisterie pédiatrique et rend les visites amusantes et confortables pour les enfants.</p>
+              </ScrollReveal>
+              
+              <ScrollReveal delay={300}>
+                <div className="relative -mt-12 ml-24 transform -rotate-2 hover:rotate-0 transition-all duration-700 hover:scale-105 animate-wiggle" style={{ animationDuration: "4s", animationDelay: "2s", animationIterationCount: "infinite" }}>
+                  <img 
+                    src="/assets/dentiste.jpg"
+                    alt="Dr Sarah Johnson"
+                    className="w-3/4 h-auto max-h-[280px] object-cover shadow-xl"
+                    draggable={false}
+                  />
                 </div>
-              </div>
-
-              <div className="border-t border-border pt-6 transition-transform duration-300 group-hover:-translate-y-0.5">
-                <h4 className="text-xl font-semibold text-foreground mb-2">Notre équipe de soutien</h4>
-                <p className="text-muted-foreground leading-relaxed">
-                  Notre équipe d'hygiénistes et d'assistants veillent à ce que votre visite soit agréable et sans stress.
-                </p>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={450}>
+          <section id="team" className="mt-16 grid gap-10 lg:grid-cols-2 lg:items-stretch">
+            <div className="relative flex h-full items-center justify-center">
+              <img 
+                src="/assets/femaledentist2.png"
+                alt={LEAD_DOCTOR.name}
+                className="float-soft max-h-[320px] w-[85%] max-w-[420px] object-contain"
+                style={{ animationDuration: "10s" }}
+                draggable={false}
+              />
+            </div>
+
+            <div className="space-y-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">L'équipe Dentalis</p>
+              <div className="space-y-2">
+                <h3 className="text-3xl font-serif text-foreground">{LEAD_DOCTOR.name}</h3>
+                <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">{LEAD_DOCTOR.role}</p>
+              </div>
+              <p className="text-sm text-muted-foreground md:text-base">{LEAD_DOCTOR.description}</p>
+
+              <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+                {LEAD_DOCTOR.focusPoints.map((item) => (
+                  <span key={item} className="rounded-full border border-border/60 px-4 py-2">
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              <div className="text-sm text-muted-foreground">
+                <p>Hygiénistes, assistantes et équipe d'accueil prolongent cette approche en coordonnant rappels, coaching et confort.</p>
+              </div>
+            </div>
+          </section>
         </ScrollReveal>
       </div>
     </section>

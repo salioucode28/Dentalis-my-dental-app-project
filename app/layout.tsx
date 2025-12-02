@@ -2,7 +2,6 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Playfair_Display } from "next/font/google"
 import "./globals.css"
-import Navbar from "@/components/navbar"
 import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({
@@ -28,9 +27,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} antialiased`} suppressHydrationWarning>
-      <body>
-        <Navbar />
+    <html
+      lang="en"
+      className={`${inter.variable} ${playfair.variable} antialiased`}
+    >
+      <body className="min-h-screen bg-background text-foreground">
         {children}
         <Toaster />
       </body>

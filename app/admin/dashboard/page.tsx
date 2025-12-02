@@ -261,18 +261,18 @@ export default function AdminDashboard() {
   const hasActiveFilters = searchQuery || statusFilter !== "all" || dateFilter
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-primary/10">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold">Tableau de bord Admin</h1>
-            <p className="text-sm text-muted-foreground">Gestion des rendez-vous dentaires</p>
+            <h1 className="text-xl font-semibold">Tableau de bord Dentalis</h1>
+            <p className="text-xs text-muted-foreground">Vue d’ensemble des rendez-vous à venir</p>
           </div>
           <Button
             variant="outline"
             onClick={handleLogout}
-            className="transition-all duration-300 hover:bg-destructive hover:text-destructive-foreground bg-transparent"
+            className="bg-transparent transition-all duration-300 hover:bg-destructive hover:text-destructive-foreground rounded-full"
           >
             Déconnexion
           </Button>
@@ -281,8 +281,8 @@ export default function AdminDashboard() {
 
       <main className="container mx-auto px-4 py-8">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+        <div className="grid grid-cols-1 gap-4 mb-8 md:grid-cols-2 lg:grid-cols-4">
+          <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.02] rounded-2xl">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Rendez-vous</CardTitle>
             </CardHeader>
@@ -291,7 +291,7 @@ export default function AdminDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+          <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.02] rounded-2xl">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">En attente</CardTitle>
             </CardHeader>
@@ -300,7 +300,7 @@ export default function AdminDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+          <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.02] rounded-2xl">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Confirmés</CardTitle>
             </CardHeader>
@@ -309,7 +309,7 @@ export default function AdminDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+          <Card className="transition-all duration-300 hover:shadow-lg hover:scale-[1.02] rounded-2xl">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Aujourd'hui</CardTitle>
             </CardHeader>
@@ -320,7 +320,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Appointments Table */}
-        <Card>
+        <Card className="rounded-2xl border-border/70">
           <CardHeader>
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between">

@@ -1,77 +1,112 @@
 "use client"
 
+import Link from "next/link"
 import { ScrollReveal } from "./scroll-reveal"
-import { Sparkles, Shield, Smile, Stethoscope, Baby, Zap } from "lucide-react"
+import { Baby, Shield, Sparkles, Smile, Stethoscope, Zap, Calendar } from "lucide-react"
+
+const HIGHLIGHTS = [
+  {
+    title: "Blanchiment lumineux",
+    description: "Techniques professionnelles douces pour réveiller l’éclat naturel de vos dents.",
+    icon: Sparkles,
+    href: "/services/blanchiment",
+  },
+  {
+    title: "Prévention & suivi",
+    description: "Contrôles réguliers, parodonte apaisée et conseils sur mesure.",
+    icon: Shield,
+    href: "/services/prevention",
+  },
+  {
+    title: "Esthétique du sourire",
+    description: "Facettes minimalistes, alignement discret et retouches invisibles.",
+    icon: Smile,
+    href: "/services/esthetique",
+  },
+  {
+    title: "Soins généraux",
+    description: "Plombages invisibles, couronnes, traitements de racine réalisés en douceur.",
+    icon: Stethoscope,
+    href: "/services/generale",
+  },
+  {
+    title: "Dentisterie enfant",
+    description: "Approche ludique et rassurante pour installer de bonnes habitudes tôt.",
+    icon: Baby,
+    href: "/services/enfant",
+  },
+  {
+    title: "Urgences dentaires",
+    description: "Créneaux rapides, protocole anti-douleur et suivi post-soin.",
+    icon: Zap,
+    href: "/services/urgence",
+  },
+]
+
+const FAQ_ENTRIES = [
+  {
+    question: "Combien de séances sont nécessaires pour un blanchiment professionnel ?",
+    answer:
+      "Nous planifions généralement deux rendez-vous : préparation et séance lumineuse, puis contrôle sous 10 jours pour ajuster selon votre sensibilité.",
+  },
+  {
+    question: "Puis-je regrouper plusieurs soins lors d’une même visite ?",
+    answer:
+      "Oui, nous combinons prévention et esthétique sur des créneaux de 45 minutes en respectant votre confort et les priorités médicales.",
+  },
+  {
+    question: "Comment se passent les urgences dentaires ?",
+    answer:
+      "Appelez-nous ou écrivez sur WhatsApp : nous vous donnons un créneau sous 24h avec protocole anti-douleur et suivi digital.",
+  },
+]
 
 export default function Services() {
   return (
-    <section id="services" className="pt-20 pb-16 px-4 bg-secondary">
-      <div className="max-w-6xl mx-auto">
+    <section id="services" className="bg-slate-50 px-4 py-16 sm:py-20">
+      <div className="mx-auto flex max-w-5xl flex-col gap-12">
         <ScrollReveal>
-          <div className="text-center mb-8">
-            <h2 className="text-4xl md:text-5xl font-serif text-foreground mb-4">Nos services</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Des soins dentaires complets, adaptés à vos besoins, dispensés avec expertise et bienveillance.
-            </p>
+          <div className="space-y-4 text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-primary">
+              <Sparkles className="h-3 w-3" />
+              Soins essentiels
+            </div>
+            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div>
+                <h2 className="text-2xl font-serif text-foreground sm:text-3xl md:text-4xl">Un rendez-vous, trois axes clés</h2>
+                <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+                  Prévention, esthétique, confort. On va à l’essentiel avec une équipe douce et disponible, inspirée de notre section rendez-vous.
+                </p>
+              </div>
+              <a
+                href="https://calendly.com"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-xs sm:px-5 sm:py-3 sm:text-sm font-semibold text-white shadow-md w-full sm:w-auto justify-center"
+              >
+                <Calendar className="h-4 w-4" />
+                Planifier un soin
+              </a>
+            </div>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <ScrollReveal delay={0}>
-            <div className="bg-background p-8 rounded-2xl border border-border hover:border-primary transition-all duration-300 hover:shadow-lg group h-full">
-              <div className="w-14 h-14 bg-muted rounded-full flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                <Sparkles className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
+        <ScrollReveal delay={80}>
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
+            {HIGHLIGHTS.map(({ title, description, icon: Icon, href }) => (
+              <div key={title} className="space-y-3 border-t border-border/60 pt-6 px-2 sm:px-0 md:border-l md:border-t-0 md:pl-6 first:border-0 first:pl-0">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="text-xl font-serif text-foreground">{title}</h3>
+                <p className="text-sm text-muted-foreground">{description}</p>
+                <Link href={href ?? "#contact"} className="inline-flex items-center text-sm font-semibold text-primary">
+                  En savoir plus →
+                </Link>
               </div>
-              <h3 className="text-xl font-serif title-accent mb-3">Blanchiment des dents</h3>
-              <p className="text-muted-foreground leading-relaxed">Traitements de blanchiment professionnels pour un sourire plus lumineux et assuré.</p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={100}>
-            <div className="bg-background p-8 rounded-2xl border border-border hover:border-primary transition-all duration-300 hover:shadow-lg group h-full">
-              <div className="w-14 h-14 bg-muted rounded-full flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                <Shield className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
-              </div>
-              <h3 className="text-xl font-serif title-accent mb-3">Soins préventifs</h3>
-              <p className="text-muted-foreground leading-relaxed">Contrôles réguliers, détartrages et soins préventifs pour préserver votre santé bucco‑dentaire.</p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={200}>
-            <div className="bg-background p-8 rounded-2xl border border-border hover:border-primary transition-all duration-300 hover:shadow-lg group h-full">
-              <div className="w-14 h-14 bg-muted rounded-full flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                <Smile className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
-              </div>
-              <h3 className="text-xl font-serif title-accent mb-3">Dentisterie esthétique</h3>
-              <p className="text-muted-foreground leading-relaxed">Facettes, bonding et relooking du sourire pour sublimer votre apparence.</p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={300}>
-            <div className="bg-background p-8 rounded-2xl border border-border hover:border-primary transition-all duration-300 hover:shadow-lg group h-full">
-              <div className="w-14 h-14 bg-muted rounded-full flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                <Stethoscope className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
-              </div>
-              <h3 className="text-xl font-serif title-accent mb-3">Dentisterie générale</h3>
-              <p className="text-muted-foreground leading-relaxed">Soins complets incluant obturations, couronnes et traitements de canal.</p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={400}>
-            <div className="bg-background p-8 rounded-2xl border border-border hover:border-primary transition-all duration-300 hover:shadow-lg group h-full">
-              <div className="w-14 h-14 bg-muted rounded-full flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                <Baby className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
-              </div>
-              <h3 className="text-xl font-serif title-accent mb-3">Dentisterie pédiatrique</h3>
-              <p className="text-muted-foreground leading-relaxed">Soins doux et adaptés aux enfants dans un environnement rassurant.</p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={500}>
-            <div className="bg-background p-8 rounded-2xl border border-border hover:border-primary transition-all duration-300 hover:shadow-lg group h-full">
-              <div className="w-14 h-14 bg-muted rounded-full flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                <Zap className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
-              </div>
-              <h3 className="text-xl font-serif title-accent mb-3">Soins d'urgence</h3>
-              <p className="text-muted-foreground leading-relaxed">Rendez‑vous le jour même pour les urgences dentaires.</p>
-            </div>
-          </ScrollReveal>
-        </div>
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   )

@@ -11,6 +11,7 @@ export const CLINIC_CONFIG = {
 
   // Address
   address: "123 Rue du Sourire, Bâtiment A, Votre Ville, 75000",
+  mapUrl: "https://maps.google.com/?q=123+Rue+du+Sourire",
 
   // Business Hours
   hours: [
