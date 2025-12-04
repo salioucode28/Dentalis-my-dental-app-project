@@ -354,7 +354,7 @@ export default function AdminDashboard() {
     try {
       await fetch("/api/auth/logout", { method: "POST" })
     } finally {
-      router.push("/admin/login")
+      router.push("/")
     }
   }
 

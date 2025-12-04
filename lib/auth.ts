@@ -32,7 +32,7 @@ export async function destroySession() {
   const cookie = cookieStore.get(COOKIE_NAME)
   if (cookie) {
     await Session.deleteOne({ token: cookie.value })
-    cookieStore.set(COOKIE_NAME, "", { path: "/", expires: new Date(0) })
+    cookieStore.delete(COOKIE_NAME)
   }
 }
 
