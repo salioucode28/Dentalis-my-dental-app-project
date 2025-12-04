@@ -352,8 +352,10 @@ export default function AdminDashboard() {
 
   const handleLogout = async () => {
     try {
-      await fetch("/api/auth/logout", { method: "POST" })
+      const response = await fetch("/api/auth/logout", { method: "POST" })
+      console.log("Logout response:", response)
     } finally {
+      console.log("Redirecting to homepage...")
       router.push("/")
     }
   }
