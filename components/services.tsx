@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { ScrollReveal } from "./scroll-reveal"
 import { Baby, Shield, Sparkles, Smile, Stethoscope, Zap, Calendar } from "lucide-react"
 
 const HIGHLIGHTS = [
@@ -65,48 +64,44 @@ export default function Services() {
   return (
     <section id="services" className="bg-slate-50 px-4 py-16 sm:py-20">
       <div className="mx-auto flex max-w-5xl flex-col gap-12">
-        <ScrollReveal>
-          <div className="space-y-4 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-primary">
-              <Sparkles className="h-3 w-3" />
-              Soins essentiels
-            </div>
-            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-              <div>
-                <h2 className="text-2xl font-serif text-foreground sm:text-3xl md:text-4xl">Un rendez-vous, trois axes clés</h2>
-                <p className="mt-2 text-sm text-muted-foreground sm:text-base">
-                  Prévention, esthétique, confort. On va à l’essentiel avec une équipe douce et disponible, inspirée de notre section rendez-vous.
-                </p>
-              </div>
-              <a
-                href="https://calendly.com"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-xs sm:px-5 sm:py-3 sm:text-sm font-semibold text-white shadow-md w-full sm:w-auto justify-center"
-              >
-                <Calendar className="h-4 w-4" />
-                Planifier un soin
-              </a>
-            </div>
+        <div className="space-y-4 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-primary">
+            <Sparkles className="h-3 w-3" />
+            Soins essentiels
           </div>
-        </ScrollReveal>
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 className="text-2xl font-serif text-foreground sm:text-3xl md:text-4xl">Un rendez-vous, trois axes clés</h2>
+              <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+                Prévention, esthétique, confort. On va à l'essentiel avec une équipe douce et disponible, inspirée de notre section rendez-vous.
+              </p>
+            </div>
+            <a
+              href="https://calendly.com"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-xs sm:px-5 sm:py-3 sm:text-sm font-semibold text-white shadow-md w-full sm:w-auto justify-center"
+            >
+              <Calendar className="h-4 w-4" />
+              Planifier un soin
+            </a>
+          </div>
+        </div>
 
-        <ScrollReveal delay={80}>
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
-            {HIGHLIGHTS.map(({ title, description, icon: Icon, href }) => (
-              <div key={title} className="space-y-3 border-t border-border/60 pt-6 px-2 sm:px-0 md:border-l md:border-t-0 md:pl-6 first:border-0 first:pl-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <h3 className="text-xl font-serif text-foreground">{title}</h3>
-                <p className="text-sm text-muted-foreground">{description}</p>
-                <Link href={href ?? "#contact"} className="inline-flex items-center text-sm font-semibold text-primary">
-                  En savoir plus →
-                </Link>
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
+          {HIGHLIGHTS.map(({ title, description, icon: Icon, href }) => (
+            <div key={title} className="space-y-3 border-t border-border/60 pt-6 px-2 sm:px-0 md:border-l md:border-t-0 md:pl-6 first:border-0 first:pl-0">
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                <Icon className="h-5 w-5" />
               </div>
-            ))}
-          </div>
-        </ScrollReveal>
+              <h3 className="text-xl font-serif text-foreground">{title}</h3>
+              <p className="text-sm text-muted-foreground">{description}</p>
+              <Link href={href ?? "#contact"} className="inline-flex items-center text-sm font-semibold text-primary">
+                En savoir plus →
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

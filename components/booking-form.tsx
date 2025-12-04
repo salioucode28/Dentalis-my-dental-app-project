@@ -11,7 +11,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Calendar, Clock, User, Phone, Mail, MessageSquare } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import { ScrollReveal } from "./scroll-reveal"
 
 export default function BookingForm() {
   const { toast } = useToast()
@@ -97,23 +96,20 @@ export default function BookingForm() {
   return (
     <section id="booking" className="bg-white px-4 py-20">
       <div className="mx-auto max-w-6xl">
-        <ScrollReveal>
-          <div className="mb-10 text-center">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
-              Étape suivante
-            </p>
-            <h2 className="mb-3 font-serif text-3xl text-foreground md:text-4xl">
-              Réservez votre prochain rendez-vous
-            </h2>
-            <p className="mx-auto max-w-2xl text-sm text-muted-foreground md:text-base">
-              Dites‑nous qui vous êtes et quand vous souhaiteriez venir. Nous vous recontactons rapidement pour
-              confirmer le créneau idéal.
-            </p>
-          </div>
-        </ScrollReveal>
+        <div className="mb-10 text-center">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+            Étape suivante
+          </p>
+          <h2 className="mb-3 font-serif text-3xl text-foreground md:text-4xl">
+            Réservez votre prochain rendez-vous
+          </h2>
+          <p className="mx-auto max-w-2xl text-sm text-muted-foreground md:text-base">
+            Dites‑nous qui vous êtes et quand vous souhaiteriez venir. Nous vous recontactons rapidement pour
+            confirmer le créneau idéal.
+          </p>
+        </div>
 
-        <ScrollReveal delay={100}>
-          <div className="grid gap-6 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)]">
+        <div className="grid gap-6 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)]">
             <Card className="shadow-lg">
               <CardHeader>
                 <CardTitle className="text-base md:text-lg">Informations du rendez-vous</CardTitle>
@@ -344,7 +340,6 @@ export default function BookingForm() {
               </CardContent>
             </Card>
           </div>
-        </ScrollReveal>
       </div>
     </section>
   )

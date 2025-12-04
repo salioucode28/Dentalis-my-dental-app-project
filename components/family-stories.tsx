@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ScrollReveal } from "./scroll-reveal"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { ChevronLeft, ChevronRight, Star } from "lucide-react"
 
@@ -54,19 +53,17 @@ export default function FamilyStories() {
   return (
     <section className="bg-slate-50 px-4 py-12 sm:py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
-        <ScrollReveal>
-          <div className="mb-8 sm:mb-12 md:mb-16 text-center">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-              Ils nous font confiance
-            </p>
-            <h2 className="mb-4 text-2xl font-serif text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
-              Ce que nos patients disent de nous
-            </h2>
-            <p className="mx-auto max-w-2xl text-muted-foreground md:text-lg">
-              Des témoignages authentiques qui reflètent notre engagement pour des soins dentaires exceptionnels
-            </p>
-          </div>
-        </ScrollReveal>
+        <div className="mb-8 sm:mb-12 md:mb-16 text-center">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-primary">
+            Ils nous font confiance
+          </p>
+          <h2 className="mb-4 text-2xl font-serif text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
+            Ce que nos patients disent de nous
+          </h2>
+          <p className="mx-auto max-w-2xl text-muted-foreground md:text-lg">
+            Des témoignages authentiques qui reflètent notre engagement pour des soins dentaires exceptionnels
+          </p>
+        </div>
 
         <div className="relative">
           <div className="overflow-hidden">
@@ -145,6 +142,9 @@ export default function FamilyStories() {
     </section>
   )
 }
+
+
+
 
 
 

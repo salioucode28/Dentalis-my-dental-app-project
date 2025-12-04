@@ -67,7 +67,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-border/70 bg-background/70 text-foreground shadow-sm transition-colors hover:bg-accent/10 md:hidden"
+            className="ml-auto flex h-8 w-8 items-center justify-center rounded-full border border-border/70 bg-background/70 text-foreground shadow-sm transition-colors hover:bg-accent/10 md:hidden"
             aria-label="Basculer le menu"
           >
             {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}

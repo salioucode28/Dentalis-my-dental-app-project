@@ -57,6 +57,19 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden h-full w-[36rem] -translate-x-1/2 rounded-full bg-primary/5 blur-3xl md:block" />
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
         <div
+          className={`relative transition-all duration-700 order-first md:order-last ${
+            isVisible ? "opacity-100 delay-150" : "-translate-y-12 opacity-0"
+          }`}
+        >
+          <img
+            src="/assets/herodentist.png"
+            alt="Dr souriante accueillant les patients"
+            className="h-full max-h-[350px] sm:max-h-[400px] lg:max-h-[450px] w-full object-contain object-center"
+            draggable={false}
+          />
+        </div>
+
+        <div
           className={`relative flex flex-col gap-7 transition-all duration-700 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
           }`}
@@ -116,19 +129,6 @@ export default function Hero() {
               </div>
             ))}
           </div>
-        </div>
-
-        <div
-          className={`relative transition-all duration-700 -translate-y-8 ${
-            isVisible ? "opacity-100 delay-150" : "-translate-y-12 opacity-0"
-          }`}
-        >
-          <img
-            src="/assets/herodentist.png"
-            alt="Dr souriante accueillant les patients"
-            className="h-full max-h-[350px] sm:max-h-[400px] lg:max-h-[450px] w-full object-contain object-center"
-            draggable={false}
-          />
         </div>
       </div>
 
